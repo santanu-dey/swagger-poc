@@ -1,0 +1,293 @@
+{
+    "swagger": "2.0",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/v1",
+    "host": "playground.apistudio.io",
+    "info": {
+        "version": "0.0.1",
+        "title": "Customs Account APIs",
+        "description": ""
+    },
+    "paths": {
+        "/customs-account/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of a `CustomsAccount`",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "delete": {
+                "tags": [
+                    "CRUD"
+                ],
+                "summary": "",
+                "description": "Delete a `CustomsAccount` with given id.",
+                "operationId": "DELETE_customs-account-id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "CRUD"
+                ],
+                "summary": "",
+                "description": "Update a `CustomsAccount` with given id.",
+                "operationId": "PUT_customs-account-id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/CustomsAccount"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CustomsAccount"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "CRUD"
+                ],
+                "summary": "",
+                "description": "Get one `CustomsAccount` with given id.",
+                "operationId": "GET_customs-account-id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CustomsAccount"
+                        }
+                    }
+                }
+            }
+        },
+        "/customs-accounts": {
+            "parameters": [],
+            "get": {
+                "tags": [
+                    "CRUD"
+                ],
+                "summary": "",
+                "description": "Get all `CustomsAccount`.",
+                "operationId": "GET_customs-accounts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CustomsAccount"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "CRUD"
+                ],
+                "summary": "",
+                "description": "Make a new `CustomsAccount`.",
+                "operationId": "POST_customs-accounts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/CustomsAccount"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CustomsAccount"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Contact": {
+            "type": "object",
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "FunctionCode": {
+                    "type": "string"
+                },
+                "Communication": {
+                    "$ref": "#/definitions/Communication"
+                }
+            },
+            "required": [
+                "Name",
+                "FunctionCode",
+                "Communication"
+            ],
+            "additionalProperties": false
+        },
+        "Communication": {
+            "title": "Communication",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "ID": {
+                        "type": "string"
+                    },
+                    "TypeCode": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "CustomsAccount": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "type": "object",
+            "properties": {
+                "FunctionCode": {
+                    "type": "string"
+                },
+                "ID": {
+                    "type": "string",
+                    "isRequired": true
+                },
+                "IssueDateTime": {
+                    "type": "string"
+                },
+                "TypeCode": {
+                    "type": "string",
+                    "isRequired": true
+                },
+                "BusinessEntity": {
+                    "$ref": "#/definitions/BusinessEntity",
+                    "isRequired": true
+                }
+            },
+            "required": [
+                "ID",
+                "TypeCode",
+                "BusinessEntity"
+            ],
+            "additionalProperties": false
+        },
+        "BusinessEntity": {
+            "title": "BusinessEntity",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "type": "string"
+                    },
+                    "ID": {
+                        "type": "string"
+                    },
+                    "RoleCode": {
+                        "type": "string"
+                    },
+                    "Address": {
+                        "title": "Address",
+                        "type": "object",
+                        "properties": {
+                            "TypeCode": {
+                                "type": "number"
+                            },
+                            "CityName": {
+                                "type": "string"
+                            },
+                            "CountryCode": {
+                                "type": "string"
+                            },
+                            "Line": {
+                                "type": "string"
+                            },
+                            "PostcodeID": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "TypeCode",
+                            "CityName",
+                            "CountryCode",
+                            "Line",
+                            "PostcodeID"
+                        ],
+                        "additionalProperties": false
+                    },
+                    "Contact": {
+                        "title": "Contact",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/Contact"
+                        }
+                    },
+                    "Communication": {
+                        "$ref": "#/definitions/Communication"
+                    }
+                },
+                "required": [
+                    "Name",
+                    "ID",
+                    "RoleCode",
+                    "Address",
+                    "Contact",
+                    "Communication"
+                ],
+                "additionalProperties": false
+            }
+        }
+    }
+}
