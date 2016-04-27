@@ -194,26 +194,21 @@
             }
         },
         "CustomsAccount": {
-            "$schema": "http://json-schema.org/draft-04/schema#",
             "type": "object",
             "properties": {
                 "FunctionCode": {
                     "type": "string"
                 },
                 "ID": {
-                    "type": "string",
-                    "isRequired": true
+                    "type": "string"
                 },
                 "IssueDateTime": {
                     "type": "string"
                 },
                 "TypeCode": {
-                    "type": "string",
-                    "isRequired": true
-                },
+                    "type": "string"                },
                 "BusinessEntity": {
-                    "$ref": "#/definitions/BusinessEntity",
-                    "isRequired": true
+                    "$ref": "#/definitions/BusinessEntity"
                 }
             },
             "required": [
